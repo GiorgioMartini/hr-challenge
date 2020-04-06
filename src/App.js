@@ -1,22 +1,19 @@
-import React  from 'react';
-
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux'
+import { handleInitialData } from './actions/shared'
 
 // Components
 import FriendsContainer from './containers/FriendsContainer';
 
-// reducer
-import friendsReducer from './reducers/friendsReducer';
+function App({ dispatch }) {
 
-const store = createStore(friendsReducer);
+  useEffect(() => {
+    dispatch(handleInitialData())
+  }, [dispatch])
 
-function App() {
   return (
-    <Provider store={store}>
-      <FriendsContainer />
-    </Provider>
+    <FriendsContainer />
   );
 }
 
-export default App;
+export default connect()(App);

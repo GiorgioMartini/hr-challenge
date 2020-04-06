@@ -3,5 +3,18 @@ import ReactDOM from 'react-dom';
 
 import App from './App';
 
+/////////////////////
+import { Provider } from 'react-redux';
+import middleware from './middleware'
+import { createStore } from 'redux';
+import reducer from './reducers/friendsReducer';
+const store = createStore(reducer, middleware)
+console.log('storeeee: ', store.getState())
+///////////////////////
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
