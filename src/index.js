@@ -9,8 +9,9 @@ import middleware from './middleware'
 import { createStore } from 'redux';
 import reducer from './reducers/friendsReducer';
 const store = createStore(reducer, middleware)
-console.log('storeeee: ', store.getState())
 ///////////////////////
+
+console.log('Store: ', store.getState())
 
 ReactDOM.render(
   <Provider store={store}>
