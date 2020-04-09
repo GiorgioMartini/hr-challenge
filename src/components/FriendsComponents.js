@@ -9,8 +9,8 @@ import TableHeader from './TableHeader';
 import Pagination from './Pagination';
 import Search from './Search'
 import Filter from './Filter'
+import Sort from './Sort'
 import { connect } from 'react-redux';
-import { filterFriends } from '../actions/friends';
 
 const {
   shape,
@@ -18,6 +18,7 @@ const {
 } = PropTypes;
 
 const FriendsComponent = ({ friends, filteredFriends }) => {
+  debugger
   const [paginatedFriends, paginate] = usePagination(filteredFriends)
 
   return (
@@ -27,6 +28,7 @@ const FriendsComponent = ({ friends, filteredFriends }) => {
       <Paper className="m-4 mt-0">
         <Search />
         <Filter />
+        <Sort />
         <Table className="p-2">
           <TableHeader />
           <TableBody friends={paginatedFriends} />

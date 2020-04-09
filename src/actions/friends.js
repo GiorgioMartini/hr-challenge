@@ -4,6 +4,7 @@ export const ADD_FRIEND = 'ADD_FRIEND'
 export const SEARCH_FRIEND = 'SEARCH_FRIEND'
 export const FILTER_FRIENDS = 'FILTER_FRIENDS'
 export const RESET_FILTER = 'FILTER_FRIENDS'
+export const SORT_FRIENDS = 'SORT_FRIENDS'
 
 export const receiveFriends = (friends) => ({
   type: RECEIVE_FRIENDS,
@@ -32,4 +33,9 @@ export const filterFriends = (filterQuery) => ({
 
 export const resetFilter = () => ({
   type: RESET_FILTER,
+})
+
+export const sortFriends = (sortingRule) => ({
+  type: SORT_FRIENDS,
+  sortingRule,
 })

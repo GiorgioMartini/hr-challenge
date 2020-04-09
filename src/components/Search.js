@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import classnames from 'classnames';
 import * as PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import { searchFriend } from '../actions/friends'
@@ -16,8 +15,8 @@ const Search = ({ dispatch, query, foundFriends }) => {
   return (
     <Paper>
       <TextField onChange={(e) => dispatch(searchFriend(e.target.value))} value={query} />
-      Result: {foundFriends.map(item => (
-        <p>{item.name}</p>
+      Result: {foundFriends.map((item, i) => (
+        <p key={i}>{item.name}</p>
       ))}
     </Paper>
   )

@@ -14,10 +14,10 @@ const {
 const FriendsTableBody = ({ friends }) => (
   <TableBody>
     {
-      friends.map(({ id, name, sex, isStared }) => (
+      friends.map(({ id, Name, sex, isStared }) => (
         <TableRow key={id}>
           <TableCell className="text-secondary"> {id} </TableCell>
-          <TableCell className="text-secondary"> {name} </TableCell>
+          <TableCell className="text-secondary"> {Name} </TableCell>
           <TableCell>
             <i className={classnames(`fa`, 'text-primary', {
               'fa-female': sex === 'female',

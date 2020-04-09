@@ -1,23 +1,25 @@
-import { RECEIVE_FRIENDS, ADD_FRIEND, SEARCH_FRIEND, FILTER_FRIENDS, RESET_FILTER } from '../actions/friends'
+import { RECEIVE_FRIENDS, ADD_FRIEND, SEARCH_FRIEND, FILTER_FRIENDS, RESET_FILTER, SORT_FRIENDS } from '../actions/friends'
 // TODO Please replace the static data below with the server data, use this endpoint http://localhost:3020/friends.
 const initialState = {
   friends: [
     {
       id: "4f733b92-e125-11e9-81b4-2a2ae2dbcce4",
-      name: "Theodore Roosevelt",
+      Name: "Theodore Roosevelt",
       sex: "male",
       isStared: false,
     },
     {
       id: "4f733e1c-e125-11e9-81b4-2a2ae2dbcce4",
-      name: "Abraham LincolnDEFAULT",
+      Name: "Abraham LincolnDEFAULT",
       sex: "male",
       isStared: true,
     }
   ],
   query: '',
   filterQuery: '',
-  filteredFriends: []
+  filteredFriends: [],
+  sortedFriends: [],
+  sortingRule: null,
 };
 
 export default (state = initialState, action) => {
@@ -26,7 +28,7 @@ export default (state = initialState, action) => {
       // ask there is a better way to do this.
       return {
         ...state,
-        friends: action.friends.map(({ Name, ...rest }) => ({ name: Name, ...rest }))
+        friends: action.friends/*.map(({ Name, ...rest }) => ({ name: Name, ...rest }))*/
       }
     case ADD_FRIEND:
       return {
@@ -63,16 +65,24 @@ export default (state = initialState, action) => {
         ...state,
         filteredFriends: state.friends,
       }
+    case SORT_FRIENDS:
+      const sortObjectsAlphabetically = (array, prop) => [...array].sort((a, b) => {
+        if (a[prop] < b[prop]) return -1
+        if (a[prop] > b[prop]) return 1
+        return 0;
+      })
+
+      const sortedFriends = action.sortingRule === 'Name'
+        ? sortObjectsAlphabetically(state.friends, 'Name')
+        : [...state.friends].sort((a, b) => a.id.localeCompare(b.id))
+
+      // const sortedFriends = sortObjectsAlphabetically(state.friends, 'Name')
+
+      return {
+        ...state,
+        filteredFriends: sortedFriends,
+      }
     default:
       return state
   }
 };
-
-
-
-
-        // if (prop === 'isStared') {
-        //   formatedRules[prop] = rules[prop] === 'true' ? true : false
-        // } else {
-        //   formatedRules[prop] = rules[prop]
-        // }
