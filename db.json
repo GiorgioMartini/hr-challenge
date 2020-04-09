@@ -92,20 +92,20 @@
     },
     {
       "id": "16",
-      "Name": "Abraham LincolnDATABASE",
-      "sex": "male",
-      "isStared": true
+      "Name": "Anastasia",
+      "sex": "female",
+      "isStared": false
     },
     {
       "id": "17",
-      "Name": "Theodore Roosevelt",
-      "sex": "male",
+      "Name": "Theresa",
+      "sex": "female",
       "isStared": true
     },
     {
       "id": "18",
-      "Name": "Abraham LincolnDATABASE",
-      "sex": "male",
+      "Name": "Ana",
+      "sex": "female",
       "isStared": true
     },
     {
@@ -118,7 +118,7 @@
       "id": "20",
       "Name": "Abraham LincolnDATABASE",
       "sex": "male",
-      "isStared": true
+      "isStared": false
     },
     {
       "id": "21",
@@ -185,61 +185,6 @@
       "Name": "Abraham LincolnDATABASE",
       "sex": "male",
       "isStared": true
-    },
-    {
-      "name": "Gorge",
-      "sex": "Male",
-      "id": "Ecjxl8b"
-    },
-    {
-      "name": "Paola",
-      "sex": "Female",
-      "id": "T7rmxgF"
-    },
-    {
-      "name": "tyest",
-      "sex": "yes",
-      "id": "_BQ4n0w"
-    },
-    {
-      "name": "a",
-      "sex": "b",
-      "id": "1nFlpVL"
-    },
-    {
-      "name": "as",
-      "sex": "bs",
-      "id": "it4LVfi"
-    },
-    {
-      "name": "xxx",
-      "sex": "yyy",
-      "id": "zfob8-e"
-    },
-    {
-      "name": "xxx",
-      "sex": "eeee",
-      "id": "dd9YiEL"
-    },
-    {
-      "name": "swsw",
-      "sex": "swsws",
-      "id": "kcPF4vR"
-    },
-    {
-      "name": "lol",
-      "sex": "omg",
-      "id": "i6wKBIM"
-    },
-    {
-      "name": "IRL",
-      "sex": "WFM",
-      "id": "AAei8MD"
-    },
-    {
-      "name": "Alexandre",
-      "sex": "male",
-      "id": "pHe9T1R"
     }
   ]
 }

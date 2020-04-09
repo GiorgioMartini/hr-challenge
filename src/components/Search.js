@@ -12,16 +12,11 @@ const {
   arrayOf,
 } = PropTypes;
 
-const Search = ({ dispatch, query, filteredItems }) => {
-
-  // const search = (query) => {
-  //   dispatch(searchFriend(query))
-  // }
-
+const Search = ({ dispatch, query, foundFriends }) => {
   return (
     <Paper>
       <TextField onChange={(e) => dispatch(searchFriend(e.target.value))} value={query} />
-      Result: {filteredItems.map(item => (
+      Result: {foundFriends.map(item => (
         <p>{item.name}</p>
       ))}
     </Paper>
@@ -39,7 +34,7 @@ Search.defaultProps = {
 const mapStateToProps = ({ query, friends }) => {
   // check this...
   return {
-    filteredItems: (friends && query)
+    foundFriends: (friends && query)
       ? friends.filter(friend => friend.name.toLowerCase().includes(query.toLocaleLowerCase()))
       : []
   };

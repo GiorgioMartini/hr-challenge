@@ -18,6 +18,7 @@ FriendsContainer.propTypes = {
 
 const mapStateToProps = ({ friends }) => ({
   friends,
+  // filteredFriends
 });
 
 

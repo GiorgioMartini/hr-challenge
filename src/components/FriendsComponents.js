@@ -8,26 +8,30 @@ import TableBody from './TableBody';
 import TableHeader from './TableHeader';
 import Pagination from './Pagination';
 import Search from './Search'
+import Filter from './Filter'
+import { connect } from 'react-redux';
+import { filterFriends } from '../actions/friends';
 
 const {
   shape,
   arrayOf,
 } = PropTypes;
 
-const FriendsComponent = ({ friends }) => {
-  const [paginatedFriends, paginate] = usePagination(friends)
+const FriendsComponent = ({ friends, filteredFriends }) => {
+  const [paginatedFriends, paginate] = usePagination(filteredFriends)
 
   return (
     <Fragment>
       <p className="font-weight-bold ml-4 mt-4 h3 text-uppercase">Friends</p>
+      <p>friends: {JSON.stringify(filteredFriends)}</p>
       <Paper className="m-4 mt-0">
         <Search />
+        <Filter />
         <Table className="p-2">
           <TableHeader />
           <TableBody friends={paginatedFriends} />
         </Table>
-        <h1>friends: {friends.length}</h1>
-        <Pagination itemsPerPage={5} totalItems={friends.length} paginate={paginate} />
+        <Pagination totalItems={friends.length} paginate={paginate} />
       </Paper>
     </Fragment>
   )
@@ -41,8 +45,14 @@ FriendsComponent.defaultProps = {
   friends: [],
 };
 
-export default FriendsComponent;
+const mapStateToProps = ({ filteredFriends, friends }) => {
+  return ({
+    filteredFriends: filteredFriends.length === 0 ? friends : filteredFriends
+  })
+};
 
+// export default FriendsComponent;
+export default connect(mapStateToProps)(FriendsComponent);
 
 // Move to hooks folder
 const usePagination = (items) => {

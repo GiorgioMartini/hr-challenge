@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import * as PropTypes from 'prop-types';
 
 import Paper from '@material-ui/core/Paper';
+import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
@@ -15,9 +16,10 @@ const {
 
 const AddFriend = ({ dispatch }) => {
 
-  const [userData, sertUserData] = useState({
+  const [userData, setUserData] = useState({
     name: '',
-    sex: ''
+    sex: '',
+    isStared: '',
   })
 
   const handleOnSubmit = (e) => {
@@ -28,17 +30,18 @@ const AddFriend = ({ dispatch }) => {
 
   const handleOnChange = (e) => {
     e.persist()
-    sertUserData((prevValue) => ({
+    setUserData((prevValue) => ({
       ...prevValue,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.name === 'isStared' ? e.target.checked : e.target.value,
     }));
   }
 
   return (
     <Paper>
       <form onSubmit={handleOnSubmit} >
-        <TextField value={userData.name} onChange={e => handleOnChange(e)} id="standard-basic" name="name" label="Name" />
-        <TextField value={userData.sex} onChange={e => handleOnChange(e)} id="standard-basic" name="sex" label="Sex" />
+        <TextField value={userData.name} onChange={handleOnChange} id="standard-basic" name="name" label="Name" />
+        <TextField value={userData.sex} onChange={handleOnChange} id="standard-basic" name="sex" label="Sex" />
+        <Checkbox value={userData.isStared} onChange={handleOnChange} name="isStared" inputProps={{ 'aria-label': 'primary checkbox' }} />
         <Button type="submit" variant="contained" color="primary">
           Primary
         </Button>
