@@ -25,10 +25,9 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_FRIENDS:
-      // ask there is a better way to do this.
       return {
         ...state,
-        friends: action.friends/*.map(({ Name, ...rest }) => ({ name: Name, ...rest }))*/
+        friends: action.friends
       }
     case ADD_FRIEND:
       return {
@@ -75,8 +74,6 @@ export default (state = initialState, action) => {
       const sortedFriends = action.sortingRule === 'Name'
         ? sortObjectsAlphabetically(state.friends, 'Name')
         : [...state.friends].sort((a, b) => a.id.localeCompare(b.id))
-
-      // const sortedFriends = sortObjectsAlphabetically(state.friends, 'Name')
 
       return {
         ...state,

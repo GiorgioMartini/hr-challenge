@@ -22,18 +22,19 @@ const AddFriend = ({ dispatch }) => {
     isStared: '',
   })
 
+  const handleOnChange = (e) => {
+    e.persist()
+    setUserData(prevValue => ({
+      ...prevValue,
+      isStared: !!prevValue.isStared,
+      [e.target.name]: e.target.name === 'isStared' ? e.target.checked : e.target.value,
+    })
+    );
+  }
+
   const handleOnSubmit = (e) => {
     e.preventDefault()
     dispatch(handleAddFriend(userData))
-    console.log(userData)
-  }
-
-  const handleOnChange = (e) => {
-    e.persist()
-    setUserData((prevValue) => ({
-      ...prevValue,
-      [e.target.Name]: e.target.Name === 'isStared' ? e.target.checked : e.target.value,
-    }));
   }
 
   return (

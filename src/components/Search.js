@@ -34,11 +34,9 @@ const mapStateToProps = ({ query, friends }) => {
   // check this...
   return {
     foundFriends: (friends && query)
-      ? friends.filter(friend => friend.name.toLowerCase().includes(query.toLocaleLowerCase()))
+      ? friends.filter(friend => friend.Name.toLowerCase().includes(query.toLocaleLowerCase()))
       : []
   };
 }
 
 export default connect(mapStateToProps)(Search);
-
-

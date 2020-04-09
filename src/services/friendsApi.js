@@ -10,12 +10,7 @@ export const getFriends = async () => {
     })
 }
 
-export const saveFriend = async ({ name, sex }) => {
-  return await axios.post(baseUrl, {
-    name,
-    sex,
-  })
-    .then(({ data }) => {
-      return data
-    })
+export const saveFriend = async (values) => {
+  return await axios.post(baseUrl, { ...values })
+    .then(({ data }) => data)
 }
